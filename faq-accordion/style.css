@@ -1,0 +1,128 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+}
+
+:root {
+     --White: hsl(0, 100%, 100%);
+     --Purple-100: hsl(275, 100%, 97%);
+     --Purple-600: hsl(292, 16%, 49%);
+     --Purple-950: hsl(292, 42%, 14%);
+}
+
+body {
+     font-family: "Work Sans", sans-serif;
+     background-color: var(--Purple-100);
+     background-image: url("assets/images/background-pattern-desktop.svg");
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: contain;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+}
+
+.accordion-card {
+     background: var(--White);
+     max-width: 600px;
+     padding: 1.5rem;
+     border-radius: 10px;
+}
+
+.accordion-card-header {
+     display: flex;
+     gap: 1rem;
+     align-items: center;
+}
+
+.accordion-card-header h1 {
+     font-size: 3rem;
+     margin-bottom: 1rem;
+}
+
+.accordion {
+     width: 100%;
+}
+
+.accordion-item {
+     margin-bottom: 1rem;
+     border-bottom: 0.5px solid rgba(128, 128, 128, 0.131);
+}
+
+.accordion-header {
+     width: 100%;
+     font-size: 0.9rem;
+     padding: 1rem 0;
+     border: none;
+     cursor: pointer;
+     background-color: transparent;
+     font-weight: 900;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+
+.accordion-header:hover {
+     color: var(--Purple-600);
+}
+
+.accordion-content {
+     max-height: 0;
+     overflow: hidden;
+     color: var(--Purple-600);
+     transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+     max-height: fit-content;
+     margin-bottom: 1rem;
+}
+
+/* Tablet screens (<= 768px) */
+@media (max-width: 768px) {
+     .accordion-card {
+          padding: 1.2rem;
+          max-width: 90%;
+     }
+
+     .accordion-card-header h1 {
+          font-size: 2.2rem;
+     }
+
+     .accordion-header {
+          font-size: 0.95rem;
+     }
+}
+
+/* Mobile screens (<= 480px) */
+@media (max-width: 480px) {
+     body {
+          background-image: url("assets/images/background-pattern-mobile.svg");
+     }
+
+     .accordion-card {
+          padding: 1rem;
+          border-radius: 8px;
+     }
+
+     .accordion-card-header h1 {
+          font-size: 1.8rem;
+     }
+
+     .accordion-header {
+          font-size: 0.85rem;
+          flex-wrap: nowrap;
+          gap: 0.5rem;
+     }
+
+     .accordion-header img {
+          width: 18px;
+          height: 18px;
+     }
+
+     .accordion-content {
+          font-size: 0.85rem;
+     }
+}
