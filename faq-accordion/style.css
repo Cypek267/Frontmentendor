@@ -1,161 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
 
 :root {
-  --white: hsl( 0, 0%, 100% );
-  --light-pink: hsl( 275, 100%, 97% );
-  --grayish-purple: hsl( 292, 16%, 49% );
-  --dark-purple: hsl( 292, 42%, 14% );
-  --bright-purple: hsl( 281, 83%, 54% );
+  --white: hsl(0, 0%, 100%);
+  --light-pink: hsl(275, 100%, 97%);
+  --grayish-purple: hsl(292, 16%, 49%);
+  --dark-purple: hsl(292, 42%, 14%);
+  --violet: hsl(281, 83%, 54%);
 }
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  font-size: .625rem;
-  font-family: 'Work Sans', sans-serif;
-  height: 100vh;
-}
-
 body {
-  height: 100vh;
-}
+  font-family: 'Work Sans', sans-serif;
+  min-height: 100vh;
+  background:
+    url('./assets/images/background-pattern-mobile.svg')
+    no-repeat top center,
+    var(--light-pink);
 
-img {
-  display: block;
-}
+  background-size: contain;
 
-ul {
-  list-style-type: none;
-}
-
-h1, h2 {
-  color: var( --dark-purple );
-}
-
-h1 {
-  font-size: 3.4rem;
-  line-height: 4rem;
-}
-
-h2 {
-  font-size: 1.7rem;
-  line-height: 2.1rem;
-  transition: color 250ms;
-}
-
-p {
-  color: var( --grayish-purple );
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  margin-bottom: 2.4rem;
-}
-
-.main {
-  position: relative;
-  padding: 2.4rem;
-  background-color: var( --light-pink );
-  min-height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  padding: 1.5rem;
 }
 
-.bg-image-desktop,
-.bg-image-mobile {
-  position: absolute;
-  top: 0;
-  left: 0;
+.container {
   width: 100%;
-}
-
-.bg-image-desktop {
-  display: none;
+  max-width: 600px;
 }
 
 .faq-card {
-  position: relative;
-  z-index: 1;
-  background-color: var( --white );
-  padding: 2.4rem 2.4rem 0;
-  border-radius: 10px;
-  max-width: 327px;
-  margin: auto;
-  animation: introFaqCard .9s ease-in-out;
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 30px rgba(0,0,0,0.08);
 }
 
 .faq-header {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.star-icon {
-  margin-right: 2rem;
-  width: 2.4rem;
+.faq-header h1 {
+  font-size: 2rem;
+  color: var(--dark-purple);
 }
 
 .faq-item {
-  border-bottom: 2px solid var( --light-pink );
-  overflow: hidden;
-  transition: max-height 350ms;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
 }
 
 .faq-item:last-child {
   border-bottom: none;
 }
 
-.faq-item-header {
+.faq-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.4rem 0;
+
+  text-align: left;
+
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-purple);
+
   cursor: pointer;
 }
 
-.faq-item-header:hover h2 {
-  color: var( --bright-purple );
+.faq-question:hover {
+  color: var(--violet);
 }
 
-.minus-icon {
-  display: none;
+.faq-question:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
-@media screen and ( min-width: 567px ) {
-  .bg-image-mobile {
-    display: none;
-  }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 
-  .bg-image-desktop {
-    display: block;
-  }
+  color: var(--grayish-purple);
+  line-height: 1.6;
 }
 
-@media screen and ( min-width: 768px ) {
+.faq-answer p {
+  padding-top: 1rem;
+}
 
-  p {
-    font-size: 1.5rem;
-    line-height: 2rem;
+.faq-item.active .faq-answer {
+  max-height: 200px;
+}
+
+@media (min-width: 768px) {
+  body {
+    background:
+      url('./assets/images/background-pattern-desktop.svg')
+      no-repeat top center,
+      var(--light-pink);
+
+    background-size: contain;
   }
 
   .faq-card {
-    max-width: 550px;
-    padding: 3rem 3rem 0;
+    padding: 2.5rem;
   }
 
-  .faq-item-header {
-    padding: 3rem 0;
-  }
-}
-
-@keyframes introFaqCard {
-  0% {
-    opacity: 0;
-    transform: translateY( 20% );
-  }
-  100% {
-    opacity: 1;
-    transform: translateY( 0% );
+  .faq-header h1 {
+    font-size: 3rem;
   }
 }
